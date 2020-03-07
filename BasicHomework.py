@@ -114,30 +114,46 @@ plt.close()
 
 #Fig9
 
-# male = data[data['male'] == 1]
-# female = data[data['male'] == 0]
-# fig = plt.figure()
-# axes = fig.add_subplot(1, 1, 1, projection='3d')
-# line1 = axes.scatter(male['mean smoothness'], male['mean symmetry'], male['mean concavity'])
-# line2 = axes.scatter(female['mean smoothness'], female['mean symmetry'], female['mean concavity'])
-# axes.legend((line1, line2), ('Male', 'Female'))
-# axes.set_xlabel('mean smoothness')
-# axes.set_ylabel('mean symmetry')
-# axes.set_zlabel('mean concavity')
-# plt.savefig(f'/Users/nevinmurad/Desktop/PProject/fig9.png', dpi=300)
-# plt.close()
+fig, axes = plt.subplots(2, 2, figsize=(20, 10))
+
+
+axes[0][0].plot(data['age'], data['heartRate'], label = 'Age vs HR', color = 'red')
+axes[0][0].set_xlabel('Age')
+axes[0][0].set_ylabel('HR')
+axes[0][1].plot(data['BMI'], data['heartRate'], label = ' BMI vs HR', color = 'blue')
+axes[0][1].set_xlabel('BMI')
+axes[0][1].set_ylabel('HR')
+axes[1][0].plot(data['BMI'], data['sysBP'], label = " BMI vs SysBP", color = 'green')
+axes[1][0].set_xlabel('BMI')
+axes[1][0].set_ylabel('Sys BP')
+axes[1][1].plot(data['age'], data['sysBP'], label = 'Age vs SysBP', color = "orange")
+axes[1][1].set_xlabel('Age')
+axes[1][1].set_ylabel('Sys BP')
+
+
+plt.tight_layout()
+plt.savefig('/Users/nevinmurad/Desktop/PProject/fig9.png', dpi=300)
+plt.close()
 
 #Fig10
 
 fig, axes = plt.subplots(2, 2, figsize=(10, 5))
 
 
-axes[0][0].plot(data['age'], data['heartRate'], label = 'Age vs HR', color = 'red')
-axes[0][1].plot(data['BMI'], data['heartRate'], label = ' BMI vs HR', color = 'blue')
-axes[1][0].plot(data['BMI'], data['sysBP'], label = " BMI vs SysBP", color = 'green')
-axes[1][1].plot(data['age'], data['sysBP'], label = 'Age vs SysBP', color = "orange")
+axes[0][0].scatter(data['prevalentStroke'], data['sysBP'], label = 'Age vs HR', color = 'red')
+axes[0][0].set_xlabel('Stroke YES / NO')
+axes[0][0].set_ylabel('Sys BP')
+axes[0][1].scatter(data['BMI'], data['sysBP'], label = ' BMI vs HR', color = 'blue')
+axes[0][1].set_xlabel('BMI')
+axes[0][1].set_ylabel('Sys BP')
+axes[1][0].scatter(data['BMI'], data['sysBP'], label = " BMI vs SysBP", color = 'green')
+axes[1][0].set_xlabel('BMI')
+axes[1][0].set_ylabel('Sys BP')
+axes[1][1].scatter(data['age'], data['sysBP'], label = 'Age vs SysBP', color = "orange")
+axes[1][1].set_xlabel('Age')
+axes[1][1].set_ylabel('Sys BP')
 
 
 plt.tight_layout()
-plt.savefig(f'/Users/nevinmurad/Desktop/PProject/fig10.png', dpi=300)
+plt.savefig('/Users/nevinmurad/Desktop/PProject/fig10.png', dpi=300)
 plt.close()
